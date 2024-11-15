@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>Coverflow Web Component Demo</title>
+
+        <link rel="stylesheet" href="./style.css"/>
+    </head>
+    <body>
+        <div class="intro">
+            <h1>Coverflow Web Component</h1>
+
+            <cover-flow start="1" visible="6" reflection="true" endless="true">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+
+            <p>
+                This web component recreates the famous
+                “<a href="https://en.wikipedia.org/wiki/Cover_Flow">Coverflow</a>”-style
+                interface, which was popularised by Apple in iTunes. It presents
+                images in an animated, three-dimensional sideways-scrollable interface.
+                Clicking the images controls the movement of the carousel.
+            </p>
+
+            <p>
+                You can download code from the
+                <a href="https://github.com/trovster/coverflow">coverflow</a>
+                repository on GitHub.
+            </p>
+
+            <h2>Web Components</h2>
+
+            <p>
+                This interface is built using
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Components">Web Components</a>
+                and must be imported before is is rendered.
+            </p>
+
+            <pre><code class="javascript">import './Coverflow.js';</code></pre>
+
+            <h2>The HTML…</h2>
+            <p>
+                The web component works with any existing list of images. Below
+                is a simple list before it has been transformed.
+            </p>
+
+            <ul class="coverflow">
+                <li><img src="./img/albums/1_nofx.webp" /></li>
+                <li><img src="./img/albums/2_greenday.webp" /></li>
+                <li><img src="./img/albums/3_rancid.webp" /></li>
+                <li><img src="./img/albums/4_ltj.webp" /></li>
+                <li><img src="./img/albums/5_rbf.webp" /></li>
+                <li><img src="./img/albums/6_fob.webp" /></li>
+                <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                <li><img src="./img/albums/8_tsl.webp" /></li>
+            </ul>
+        </div>
+
+        <div class="options">
+            <h2>Options</h2>
+
+            <p>
+                To use the coverflow component you must create a <code>&#60;cover-flow&#62;</code>
+                element wrapped around a list of images. The functionality of the component
+                can be configured using the following options:
+            </p>
+
+            <dl id="attributes">
+                <dt><code>visible="integer"</code></dt>
+                <dd>The number of images visible. Must be <strong>more than one</strong>.</dd>
+
+                <dt><code>start="integer"</code></dt>
+                <dd>The starting position of the images. This should <em>start at one</em>.</dd>
+
+                <dt><code>reflection="boolean"</code></dt>
+                <dd>Whether the reflection should be shown.</dd>
+
+                <dt><code>endless="boolean"</code></dt>
+                <dd>Whether the items should be looped and create an endless list.</dd>
+            </dl>
+
+            <pre><code>&#60;cover-flow
+    visible="4"
+    start="4"
+    reflection="true"
+    endless="true"
+&#62;
+    &#60;ul&#62;
+    &#60;/ul&#62;
+&#60;/cover-flow&#62;</code></pre>
+        </div>
+
+        <div id="examples">
+            <h3>Default</h3>
+            <p>This is the default component, with no options set.</p>
+
+            <cover-flow class="coverflow">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+
+            <h3>Non-Square</h3>
+            <p>Non-square images can be used, for example movie posters.</p>
+
+            <cover-flow class="coverflow">
+                <ol class="coverflow">
+                    <li><img src="./img/posters/1_eternal-sunshine-of-the-spotless-mind.webp" /></li>
+                    <li><img src="./img/posters/2_inception.webp" /></li>
+                    <li><img src="./img/posters/3_2001-a-space-odyssey.webp" /></li>
+                    <li><img src="./img/posters/4_amores-perros.webp" /></li>
+                    <li><img src="./img/posters/5_the-fountain.webp" /></li>
+                    <li><img src="./img/posters/6_gone-baby-gone.webp" /></li>
+                    <li><img src="./img/posters/7_the-prestige.webp" /></li>
+                    <li><img src="./img/posters/8_argo.webp" /></li>
+                    <li><img src="./img/posters/9_spider-man-across-the-spider-verse.webp" /></li>
+                    <li><img src="./img/posters/10_dan-in-real-life.webp" /></li>
+                </ol>
+            </cover-flow>
+
+            <h3>Visible Items</h3>
+            <p>
+                In this example, the <code>visible</code> attribute has been set
+                to <em>8</em>. This controls how many items are visible at any time.
+            </p>
+
+            <cover-flow visible="8">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+
+            <h3>Start Position</h3>
+            <p>
+                In this example, the <code>start</code> attribute has been set
+                to <em>1</em>. This means the interface starts at the first item.
+            </p>
+
+            <cover-flow start="1">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+
+            <h3>Reflections</h3>
+            <p>
+                When adding the <code>reflection="true"</code> attribute, a
+                “shiny-floor” reflection is added. This mimics the design that
+                was implemented in Apple iTunes.
+            </p>
+
+            <cover-flow class="reflection" reflection="true">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+
+            <h3>Endless</h3>
+            <p>
+                When adding the <code>endless="true"</code> attribute, an
+                endless loop of images is created. When reaching the end of the
+                items, the component loops back to the beginning and vice-versa.
+            </p>
+
+            <cover-flow class="endless" endless="true">
+                <ul class="coverflow">
+                    <li><img src="./img/albums/1_nofx.webp" /></li>
+                    <li><img src="./img/albums/2_greenday.webp" /></li>
+                    <li><img src="./img/albums/3_rancid.webp" /></li>
+                    <li><img src="./img/albums/4_ltj.webp" /></li>
+                    <li><img src="./img/albums/5_rbf.webp" /></li>
+                    <li><img src="./img/albums/6_fob.webp" /></li>
+                    <li><img src="./img/albums/7_yellowcard.webp" /></li>
+                    <li><img src="./img/albums/8_tsl.webp" /></li>
+                </ul>
+            </cover-flow>
+        </div>
+
+        <p class="footer note">
+            Download code from the
+            <a href="https://github.com/trovster/coverflow">coverflow</a>
+            repository on GitHub.
+        </p>
+
+        <script type="module">
+            import './Coverflow.js';
+        </script>
+    </body>
+</html>
